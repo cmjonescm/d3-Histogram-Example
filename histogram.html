@@ -25,12 +25,20 @@
         shape-rendering: crispEdges;
     }
 
+    .axisLabel {
+        font-family:Verdana;
+        font-size:55;
+        fill:blue;
+
+
+    }
+
 </style>
 <body>
     <script src="d3.v3.js"></script>
 <script>
 
-    var margin = {top: 10, right: 20, bottom: 20, left: 60};
+    var margin = {top: 10, right: 20, bottom: 40, left: 80};
 //    var width = 960 - margin.left - margin.right;
 //    var height = 500 - margin.top - margin.bottom;
     var width = 1000;
@@ -80,19 +88,38 @@
                 .attr("y1", height)
                 .attr("y2", function(d) { return y(d.Intensity); });
 
+        //Create X axis label
+        svg.append("text")
+                .attr("x", width / 2 )
+                .attr("y", height + margin.bottom )
+                .attr("class", "axisLabel")
+                .style("text-anchor", "middle")
+                .text("Mass m/z");
+
         // <g> element is used to group SVG shapes together
         svg.append("g")
                 .attr("class", "x axis")
                 .attr("transform", "translate(0," + height + ")")
                 .call(d3.svg.axis()
-                        .scale(x)
-                        .orient("bottom"));
+                .scale(x)
+                .orient("bottom"));
 
+        //Create Y axis label
+        svg.append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 0 - margin.left)
+                .attr("x", 0 - (height / 2))
+                .attr("dy", "1em")
+                .attr("class", "axisLabel")
+               // .style("text-anchor", "middle")
+                .text("Intensity");
+
+        // <g> element is used to group SVG shapes together
         svg.append("g")
                 .attr("class", "y axis")
                 .call(d3.svg.axis()
-                        .scale(y)
-                        .orient("left"));
+                .scale(y)
+                .orient("left"));
 
     });
 
