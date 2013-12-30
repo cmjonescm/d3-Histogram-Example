@@ -1,0 +1,35 @@
+
+svg {
+    font: 10px sans-serif;
+}
+
+line.bin {
+    stroke: black;
+    stroke-width: 1px;
+    cursor:pointer;
+}
+
+line.selected {
+    stroke: red;
+    stroke-width: 1px;
+    cursor:pointer;
+}
+
+
+.axis path, .axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+
+.axisLabel {
+    font-family:Verdana;
+    font-size:55;
+    fill:blue;
+}
+
+.brush .extent {
+    stroke: #fff;
+    fill-opacity: .125;
+    shape-rendering: crispEdges;
+}
