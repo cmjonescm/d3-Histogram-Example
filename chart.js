@@ -59,6 +59,28 @@ d3.csv("scan.csv", function(bins) {
         .attr("y1", height)
         .attr("y2", function(d) { return y(d.Intensity); });
 
+    // Add peak labels!!
+    svg.selectAll("text").
+        data(bins).
+        enter().
+        append("svg:text").
+        attr("x", function(d, index) {
+            return x(d.Mass);
+        }).
+        attr("y", function(d) {
+            return y(d.Intensity) - 15;
+        }).
+        attr("dx", - 1/2).
+        attr("dy", "1.2em").
+        attr("text-anchor", "middle").
+        text(function(datum) {
+            return datum.Mass;
+        }).
+        attr("fill", "black");
+
+
+
+
 
     var g = d3.select("svg");
 
